@@ -6,6 +6,7 @@
     --label-background: #6b288a;
     --label-icon: #ffffff;
     --body-background: #d2afff;
+    --components-background: #DA70D6;
 }
 
 
@@ -16,6 +17,17 @@
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
+
+.current{
+    background-color: var(--label-background);
+    border-radius: 20px;
+    color: white;
+}
+
+.current p{
+    color: white;
+}
+
 body{
     background-color: var(--body-background);
 }
@@ -24,13 +36,18 @@ body{
     position: fixed;
     top:0;
     left: 0;
-    height: 115%;
-    width: 78px;
+    height: 100%;
+    width: 80px;
     padding-top: 10px;
     padding-left: 14px;
     padding-right: 14px;
-    background-color: var(--colour-secondary);
+    background-color: var(--colour-primary);
     transition:all .25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .sidebar p{
@@ -69,14 +86,15 @@ body{
     list-style: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition:all .25s ease-in-out;
-    padding-left: 10px;
-    padding-right: 10px;
 
 }
 
 
 .sidebar a li{
+    align-items: center;
+    justify-content: left;
     text-decoration: none;
     display: flex;
     color: black;
@@ -90,9 +108,9 @@ body{
 .sidebar li .icon{
     font-size: 20px;
     min-width: 60px;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 6px;
+    margin-right: 10px;
 }
 
 .sidebar li:hover{
@@ -102,12 +120,17 @@ body{
 }
 
 
+
 .sidebar:hover{
     width: 250px;
 }
 
 .sidebar:hover p{
     opacity: 1;
+}
+
+.sidebar:hover + .contents{
+    transform: translateX(170px);
 }
 
 #features_container{
@@ -256,4 +279,19 @@ div:has(input:focus) > label{
     width: 13em;
     color: white;
     background-color: var(--colour-secondary)
+}
+
+
+.content{
+    display: grid;
+    grid-template-columns: 8vw 8vw 8vw 8vw ;
+    transition:all .25s ease-in-out;
+    margin-left: 130px;
+    transform: translateX(0);
+}
+
+.content div{
+    background-color: var(--components-background);
+
+
 }
