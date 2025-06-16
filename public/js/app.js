@@ -6,9 +6,10 @@ button = sidebar.querySelector("#something");
 
 
 sidebar.addEventListener("mouseover", () =>{
-    contents.style.marginLeft = "325px";
+    contents.style.marginLeft = "295px";
 });
 
 sidebar.addEventListener("mouseout", () =>{
-    contents.style.marginLeft = "150px";
+    contents.style.marginLeft = "120px";
 });
+

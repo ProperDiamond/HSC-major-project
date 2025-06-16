@@ -24,8 +24,8 @@
         </header>
         <div class="menu">
           <ul class="links">
-            <a class="text" href="#" aria-label ="link to home page">
-              <li class="current">
+            <a class="text" href="home.html" aria-label ="link to home page">
+              <li>
                   <span><svg xmlns="http://www.w3.org/2000/svg" class="icon" height="24px" viewBox="150 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-200v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H600q-17 0-28.5-11.5T560-160v-200q0-17-11.5-28.5T520-400h-80q-17 0-28.5 11.5T400-360v200q0 17-11.5 28.5T360-120H240q-33 0-56.5-23.5T160-200Z"/></svg></span>
                   <p>Home</p>
                </li>
@@ -36,8 +36,8 @@
                   <p>Calendar</p>
                </li>
             </a>
-            <a class="text" href="todolist.html" aria-label ="link to settings page">
-              <li>
+            <a class="text" href="#" aria-label ="link to settings page">
+              <li class="current">
                 <i class='bx bx-task icon' aria-label="icon for the settings page" ></i>
                 <p>Tasks</p>
               </li>
@@ -56,16 +56,40 @@
         
         
       </nav>
-      <div class="home content">
-          <div id="greeting_card"><h1>Hello</h1></div>
-          <div id="schedule_card"><h1>hi</h1></div>
-          <div id="todolist"></div>
-          <div>
-            
-          </div>
+      <div class="content">
+        <div id="todo_heading" class="contentitem"><h1>Todo List</h1></div>
+        <div id="todo_view" class="contentitem">
+        </div>
+        <div id="todo_edit" class="contentitem">
+            <form class="task_inputs" id="task_form"> 
+                <h2>Task Name</h2>
+                <div class="task_info">
+                    <input required type="text" id="task_name" name="task_name" placeholder="Task Name"> 
+                </div>
+                <h2>Task Deadline</h2>
+                <div class="task_info">
+                    <input required type="datetime-local" id="task_deadline" name="task_deadline"> 
+                </div>
+                <h2>Task Priority</h2>
+                <div class="task_notes">
+                    <select id="task_priority" name="task_priority" required>
+                      <option value="" hidden selected disabled>Select a Priority</option>
+                      <option value="3">low</option>
+                      <option value="2">medium</option>
+                      <option value="1">urgent</option>
+                    </select>
+                </div>
+                
 
+
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+
+        
       </div>
     </main>
     <script src="../js/app.js"></script>
+    <script src="../js/todo.js"></script>
     </body>
 </html>
