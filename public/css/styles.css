@@ -3,10 +3,12 @@
     --colour-secondary: #0a0a0c;
     --text-color: #2e2b41;
     --input-color: #F3F0FF;
-    --label-background: #6b288a;
+    --label-background: #9039b9;
+    --icon-background: #cd9be3;
     --label-icon: #ffffff;
     --body-background: #d2afff;
     --components-background: #DA70D6;
+    --task-background: #f4c2fe;
 }
 
 
@@ -18,10 +20,9 @@
 }
 
 
-.current{
+.sidebar li.current{
     background-color: var(--label-background);
     border-radius: 20px;
-    color: white;
 }
 
 .current p{
@@ -75,13 +76,14 @@ body{
 
 .sidebar li{
     height: 50px;
-    margin-top: 10px;
+    margin-top: 15px;
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
     transition:all .25s ease-in-out;
-
+    background-color: var(--icon-background);
+    border-radius: 20px;
 }
 
 
@@ -104,12 +106,15 @@ body{
     display: flex;
     align-items: center;
     margin-right: 10px;
+   
 }
 
+
+
 .sidebar li:hover{
-    border-radius: 20px;
+    border-radius: 23px;
     box-shadow:6px 6px 3px rgba(21, 21, 21, 0.2);
-    background: hsl(188, 40%, 65%);
+    background: #d2a9fb;
 }
 
 
@@ -278,7 +283,6 @@ div:has(input:focus) > label{
     grid-template-rows: 1fr auto;
     transition: margin-left .25s ease-in-out;
     margin-left: 120px;
-    border: solid;
     transform: translateY(73px);
     height: 100%;
     grid-gap: 20px;
@@ -294,8 +298,8 @@ div:has(input:focus) > label{
 }
 
 #greeting_card, #todo_heading{
-    grid-column-start: 1;
-    grid-column-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 4;
 }
 
 #todo_heading{
@@ -304,21 +308,29 @@ div:has(input:focus) > label{
 
 #todo_view{
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
 }
 
+
+
 #todo_edit{
-    grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
 }
 
 .task_inputs{
     width: min(400px, 100%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    gap: 15px;
 }
 
 .task_inputs input{
@@ -333,44 +345,48 @@ div:has(input:focus) > label{
     
 }
 
-#todo_view{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-}
+
+
+
 
 .task{
     display:flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    background-color: var(--colour-primary);
+    background-color: var(--task-background);
     border-radius: 20px;
     padding: 10px;
-    
+    transition: 500ms ease-in-out;
 }
+
+.task:hover{
+    opacity: 1;
+}
+
 
 .task_info{
     display: flex;
     flex-direction: column;
+    gap: 3px;
 }
 
 
-.circular_status{
-    border-radius: 25px;
+.status{
     width: 25px;
     height: 25px;
     color: white;
+    text-indent: 1px;
+    text-overflow: '';
+    border: 2px black solid;
+    background: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 
-#todo_view select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
-  
-}
+
+
 
 .pill_labels{
     display:flex;
@@ -381,10 +397,103 @@ div:has(input:focus) > label{
 .pill_label{
     border-radius: 10px;
     background-color: white;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    min-width: 30px;
+    font-size: 0.7rem;
 }
 
 
-.pill_labels .deadline{
-    font-size: 0.5em;
+select.pill_label:focus {
+    outline: none;
 }
 
+.delete{
+    margin-left : 65%;
+    opacity: 0;
+    transition: 200ms ease;
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.priority{
+    max-width: auto;
+}
+
+
+.dropdown{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.delete button{
+    border: none;
+}
+
+
+.choices__item--choice.is-highlighted {
+    background-color: #a884ec !important;
+    color: #fff !important;
+}
+
+.choices__list--dropdown .choices__item[data-value="a"] {
+  display: none !important;
+}
+
+
+.choices__list--dropdown .choices__item[data-value="1"].is-highlighted {
+  background: #FF746C !important; 
+  color:white !important;
+}
+.choices__list--dropdown .choices__item[data-value="2"].is-highlighted {
+  background: #FFEE8C !important;  
+  color:black !important;
+}
+.choices__list--dropdown .choices__item[data-value="3"].is-highlighted {
+  background: #cbeec8 !important;  
+  color:black !important;
+}
+
+.choices{
+    min-width: 120px;
+    background-color: white;
+}
+
+.choices__list--dropdown {
+    min-width: 120px;
+}
+
+
+#todo_submit{
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: .85em 4em;
+    color: white;
+    background-color: var(--label-background);
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+}
+
+#todo_submit:hover{
+    border-radius: 50px;
+    color: white;
+    background-color: var(--colour-secondary)
+}
+
+.task.completed{
+    opacity: 0;
+    transform: translateX(200px);
+}
+.task.deleted{
+    opacity: 0;
+}
