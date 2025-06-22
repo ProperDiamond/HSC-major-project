@@ -1,16 +1,30 @@
 
+
 const content = document.getElementById("content")
 const form = document.getElementById("task_form")
 const todolist = document.getElementById("todo_view")
-
+const short = document.getElementById("short-term")
+const long = document.getElementById("long-term")
 //console.log("hi")
 
 
 let db;
 const request = window.indexedDB.open("todolist", 1);
 
-function task_status(){
-
+function task_status(status){
+  if(status == "Not Started"){
+    return `<select name="task_status" class="circular_status" required>
+              <option selected value="Not Started">Not Started</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+            </select>`
+  }else{
+    return `<select name="task_status" class="circular_status" required>
+              <option value="Not Started">Not Started</option>
+              <option selected value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+            </select>`
+  }
 }
 
 
@@ -95,7 +109,10 @@ function dropdown_display(priority){
 }
 
 function rendering(){
-  todolist.innerHTML =""
+  short.innerHTML =`<h2 class= 'todo_headings'>Short-Term Tasks</h2>
+                    <div class="task_list"></div>`
+  long.innerHTML = `<h2 class = 'todo_headings'>Long-Term Tasks</h2>
+                      <div class="task_list"></div>`
 
 
   const render_transaction = db.transaction("tasks");
@@ -108,24 +125,93 @@ function rendering(){
     if (cursor) {
       const task = document.createElement("div")
       const task_info = cursor.value
+      task.setAttribute("data-id", `${task_info.id}`);  
       task.classList.add("task")
-      todolist.append(task)
-      task.setAttribute("data-id", `${task_info.id}`);   
-      task.innerHTML = 
-
-      `
-      <input class="status" type="checkbox"/>
-       
-       <div class="task_info">
-        <h1 class="task_name">${task_info.task_name}</h1>
-        <div class = "pill_labels"> 
-          <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
-          <div class="dropdown">
-            <p class="pill_label priority" style='background-color:${priority_colour(task_info.task_priority)}'>${priority_text(task_info.task_priority)}</p>
+      if(task_info.task_type == "s"){
+        const short_div = short.querySelector(".task_list")
+        short_div.append(task)
+        task.innerHTML = 
+          `
+          <div class="status-wrapper">
+            <input class="status" type="checkbox"/>
           </div>
-        </div> 
-       </div>
-        `
+          
+          <div class="task_info">
+            <h1 class="task_name">${task_info.task_name}</h1>
+            <div class = "pill_labels"> 
+              <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
+              <div class="dropdown">
+                <p class="pill_label priority" style='background-color:${priority_colour(task_info.task_priority)}'>${priority_text(task_info.task_priority)}</p>
+              </div>
+            </div> 
+          </div>
+          `
+        const checkbox = task.querySelector(".status");
+        checkbox.addEventListener("change", () =>{
+          confetti({
+            particleCount: 120,
+            spread: 80,
+            origin: { y: 0.6 },
+          });
+          task.classList.add("completed");
+          const id = Number(delete_button.dataset.id)
+          const complete_transaction = db.transaction("tasks", "readwrite");
+          const complete_store = complete_transaction.objectStore("tasks");
+          complete_store.delete(id);
+          setTimeout(() => {
+            task.remove()
+          }, 500);
+          
+        })
+      }else{
+        const long_div = long.querySelector(".task_list")
+        long_div.append(task)
+        task.innerHTML = 
+          `
+          ${task_status(task_info.task_status)}
+          <div class="task_info">
+            <h1 class="task_name">${task_info.task_name}</h1>
+            <div class = "pill_labels"> 
+              <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
+              <div class="dropdown">
+                <p class="pill_label priority" style='background-color:${priority_colour(task_info.task_priority)}'>${priority_text(task_info.task_priority)}</p>
+              </div>
+            </div> 
+          </div>
+          `
+        const status = task.querySelector(".circular_status");
+        const dropdown = new Choices(status, {
+          searchEnabled: false,  
+          itemSelectText: '',     
+          shouldSort: false      
+        });
+        status.addEventListener("change", () => {
+          if(status.value != "Completed"){
+            const status_transaction = db.transaction("tasks", "readwrite");
+            const status_store = status_transaction.objectStore("tasks");
+            task_info.task_status = status.value
+            status_store.put(task_info)
+          }else{
+            confetti({
+            particleCount: 240,
+            spread: 160,
+            origin: { y: 0.6 },
+          });
+            task.classList.add("completed");
+            const id = Number(delete_button.dataset.id)
+            const longcomplete_transaction = db.transaction("tasks", "readwrite");
+            const longcomplete_store = longcomplete_transaction.objectStore("tasks");
+            longcomplete_store.delete(id);
+            setTimeout(() => {
+              task.remove()
+            }, 500);
+          }
+          
+        })
+      }
+      
+       
+      
       //console.log(cursor.value);
       const delete_button = document.createElement("button");
       delete_button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm120-160q17 0 28.5-11.5T440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280Zm160 0q17 0 28.5-11.5T600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280Z"/></svg>'
@@ -149,23 +235,9 @@ function rendering(){
       task.addEventListener("mouseout", () =>{
         delete_button.style.opacity = 0;
       })
-      const checkbox = task.querySelector(".status");
-      checkbox.addEventListener("change", () =>{
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
-        task.classList.add("completed");
-        const id = Number(delete_button.dataset.id)
-        const complete_transaction = db.transaction("tasks", "readwrite");
-        const complete_store = complete_transaction.objectStore("tasks");
-        complete_store.delete(id);
-        setTimeout(() => {
-          task.remove()
-        }, 500);
-        
-      })
+
+      
+      
       cursor.continue();
     }
   };

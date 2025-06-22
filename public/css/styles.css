@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-family: 'sans-serif', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
 
@@ -315,6 +315,13 @@ div:has(input:focus) > label{
     padding: 20px;
 }
 
+#todo_view .contentitem{
+    padding: 20px;
+}
+
+.todo_headings{
+    margin-bottom: 15px;
+}
 
 
 #todo_edit{
@@ -388,6 +395,7 @@ div:has(input:focus) > label{
 
 
 
+
 .pill_labels{
     display:flex;
     flex-direction: row;
@@ -409,16 +417,17 @@ select.pill_label:focus {
     outline: none;
 }
 
-.delete{
-    margin-left : 65%;
+.task .delete{
     opacity: 0;
     transition: 200ms ease;
-    position: absolute;
     cursor: pointer;
     border: none;
     background: none;
     width: 50px;
     height: 50px;
+    margin-left: auto;
+    margin-right: 5px;
+
 }
 
 
@@ -437,6 +446,20 @@ select.pill_label:focus {
 .delete button{
     border: none;
 }
+
+.task .choices{
+    min-width: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    align-items: center;
+}
+
+.choices_inner{
+    margin: auto;
+}
+
+
 
 
 .choices__item--choice.is-highlighted {
@@ -462,12 +485,35 @@ select.pill_label:focus {
   color:black !important;
 }
 
-.choices{
+
+.choices__list--dropdown .choices__item[data-value="Not Started"].is-highlighted {
+  background: #c3c6d1 !important; 
+  color:white !important;
+}
+.choices__list--dropdown .choices__item[data-value="Ongoing"].is-highlighted {
+  background: #B3EBF2 !important;  
+  color:black !important;
+}
+.choices__list--dropdown .choices__item[data-value="Completed"].is-highlighted {
+  background: #cbeec8 !important;  
+  color:black !important;
+}
+
+
+
+
+.choices.editdrop{
     min-width: 120px;
     background-color: white;
 }
 
-.choices__list--dropdown {
+
+
+.choices.circular_status .choices__inner {
+    max-height: 20px !important;
+}
+
+.editdrop.choices__list--dropdown {
     min-width: 120px;
 }
 
@@ -496,4 +542,17 @@ select.pill_label:focus {
 }
 .task.deleted{
     opacity: 0;
+}
+
+
+.task_list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.status_wrapper{
+    display: flex;
+    align-items: center;
+    align-self: center;
 }
