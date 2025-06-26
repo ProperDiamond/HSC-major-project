@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="datetime-local" name="begin" placeholder="hrs:mins">
+        <input type="datetime-local" id="end" name="end" placeholder="hrs:mins">
+        <input type="submit">
+    </form>
+    
+</body>
+
+<script>
+    const form = document.getElementById("form")
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const event = new FormData(e.target);
+        const entries = Object.fromEntries(event.entries());
+        console.log(entries.begin);
+        
+        
+        form.reset();
+        document.getElementById("end").value = entries.begin
+    
+    })
+
+</script>
+
+</html>

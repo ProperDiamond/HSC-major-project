@@ -78,54 +78,53 @@
         
         
       </nav>
+      
       <div class="content">
-        <div id="todo_heading" class="contentitem"><h1>Todo List</h1></div>
-        <div id="todo_view">
-          <div id="short-term" class="contentitem">
+        <div id="todo_heading" class="heading contentitem"><h1>To-do List</h1></div>
+        <div id="todo_list">
+          <div id="todo_view">
+            <div id="short-term" class="contentitem todo_lists"></div>
+            <div id="long-term" class="contentitem todo_lists"></div>
           </div>
-          <div id="long-term" class="contentitem">
-          </div>
-        </div>
-        
-        
-        <div id="todo_edit" class="contentitem">
-          <h1 id="edit_heading">Task Editor</h1>
-            <form class="task_inputs" id="task_form"> 
-                
-                <div class="task_info">
-                  <h2>Task Name</h2>
-                  <input required type="text" id="task_name" name="task_name" placeholder="Task Name"> 
-                </div>
-                
-                <div class="task_info">
-                  <h2>Task Type</h2>
-                    <select id="task_type" name="task_type" class="editdrop" required>
-                      <option value="a" hidden selected disabled>Select a Type</option>
-                      <option value="s">Short-Term</option>
-                      <option value="l">Long-Term</option>
-                    </select>
-                </div>
-                
-                <div class="task_info">
-                  <h2>Task Deadline</h2>
-                    <input required type="datetime-local" id="task_deadline" name="task_deadline"> 
-                </div>
-                
-                
-                <div class="task_info">
-                  <h2>Task Priority</h2>
-                    <select id="task_priority" name="task_priority" class="editdrop" required>
-                      <option value="a" hidden selected disabled>Select a Priority</option>
-                      <option value="3">low</option>
-                      <option value="2">medium</option>
-                      <option value="1">high</option>
-                    </select>
-                </div>
-                
+          <div id="todo_edit" class="contentitem">
+            <h1 id="edit_heading">Task Editor</h1>
+              <form class="task_inputs" id="task_form"> 
+                  
+                  <div class="task_info">
+                    <h2>Task Name</h2>
+                    <input required type="text" id="task_name" name="task_name" placeholder="Task Name"> 
+                  </div>
+                  
+                  <div class="task_info">
+                    <h2>Task Type</h2>
+                      <select id="task_type" name="task_type" class="editdrop" required>
+                        <option value="a" hidden selected disabled>Select a Type</option>
+                        <option value="s">Short-Term</option>
+                        <option value="l">Long-Term</option>
+                      </select>
+                  </div>
+                  
+                  <div class="task_info">
+                    <h2>Task Deadline</h2>
+                      <input required type="datetime-local" id="task_deadline" name="task_deadline"> 
+                  </div>
+                  
+                  
+                  <div class="task_info">
+                    <h2>Task Priority</h2>
+                      <select required id="task_priority" name="task_priority" class="editdrop" >
+                        <option value="a" hidden selected disabled>Select a Priority</option>
+                        <option value="3">low</option>
+                        <option value="2">medium</option>
+                        <option value="1">high</option>
+                      </select>
+                  </div>
+                  
 
 
-                <button id="todo_submit" type="submit">Add Task</button>
-            </form>
+                  <button id="todo_submit" type="submit">Add Task</button>
+              </form>
+          </div>
         </div>
 
         

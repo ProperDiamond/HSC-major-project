@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net;">
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Insert Website Name Here</title>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">    
@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
   </head>
   <body>
     <main>
@@ -75,10 +76,48 @@
         
         
       </nav>
-      <div class="content">
+      <div class="backdrop"></div>
+      <div class="modal_container">
+        <div class="event_modal">
+            <form id="event_form">
+              <h2>Event Name</h2>
+              <input id="event_name" name="event_name" placeholder="Type Event Name here" required>
+              <h2>Event Notes</h2>
+              <input id="event_notes" name="event_notes" placeholder="Additional notes">
+              <div id="event_times">
+                <div id="event_start">
+                  <h2>Start Time</h2>
+                  <input name="event_start" id="start" type="datetime-local" required>
+                </div>
+                <div id="event_end">
+                  <h2>End Time</h2>
+                  <input name="event_end" id="end" type="datetime-local" required>
+                </div>
+                <div id="all_day">
+                  <input name="all" id="all" type="checkbox">
+                </div>
+              </div>
+              <div class="event_actions">
+                <button id="cancel">Cancel</button>
+                <button type="submit">Save</button>
+              </div>
+            </form>
+
+          </div>
+      </div>
+      <div class="content calendar_view">
+        <div class="contentitem heading">
+          <h1>Calendar</h1>
+        </div>
+        
+        <div id="calendar" class="contentitem"></div>
+
+        
+        
 
       </div>
     </main>
     <script src="../js/app.js"></script>
+    <script src="../js/calendar.js"></script>
     </body>
 </html>

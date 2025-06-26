@@ -5,7 +5,8 @@ const form = document.getElementById("task_form")
 const todolist = document.getElementById("todo_view")
 const short = document.getElementById("short-term")
 const long = document.getElementById("long-term")
-//console.log("hi")
+const deadline_input = document.getElementById("task_deadline")
+
 
 
 let db;
@@ -45,13 +46,13 @@ function date_pill(deadline){
     timedifference -= timediffminutes * (1000 * 60)
     const timediffseconds = Math.floor(timedifference / (1000))
 
-    console.log(`${timediffdays} ${timediffhours} ${timediffminutes} ${timediffseconds}`)
+  
     if(timediffdays > 0){
       return `Due in ${timediffdays} days`
     }else if(timediffhours > 0){
-      return `Due in ${timediffhours} hours and ${timediffminutes} minutes`
+      return `Due in ${timediffhours} hours ${timediffminutes} mins`
     }else{
-      return `Due in ${timediffminutes} minutes and ${timediffseconds} seconds`
+      return `Due in ${timediffminutes} mins ${timediffseconds} secs`
     }
   }
 
@@ -59,6 +60,10 @@ function date_pill(deadline){
 }
 
 function date_update(){
+  const now = new Date()
+  const timestring = now.toISOString()
+  console.log(timestring.slice(0,16))
+  deadline_input.min = timestring.slice(0,16)
   const dates = document.querySelectorAll(".deadline");
   dates.forEach(date => {
     date.textContent = date_pill(date.dataset.id);
@@ -170,7 +175,7 @@ function rendering(){
           `
           ${task_status(task_info.task_status)}
           <div class="task_info">
-            <h1 class="task_name">${task_info.task_name}</h1>
+            <h2 class="task_name">${encodeURI(task_info.task_name).replaceAll("%20", " ")}</h2>
             <div class = "pill_labels"> 
               <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
               <div class="dropdown">
@@ -246,15 +251,6 @@ function rendering(){
 }
 
 
-
-
-
-
-
-
-
-
-
 request.onupgradeneeded = (event) => {
   const db = event.target.result;
   const storage = db.createObjectStore("tasks", {keyPath: "id", autoIncrement : true})
@@ -268,24 +264,8 @@ request.onsuccess = (event) => {
   rendering();
 
   setInterval(date_update, 1000);
-
-  
-
   
 }
-
-  
-  
-
-  // const task_name = storage.index("task_name")
-  // const task_deadline = storage.index("task_deadline")
-  // const task_priority = storage.index("task_priority")
-  // const task_status = storage.index("task_status")
-  
-
-  // storage.put({task_name: entries.task_name, task_deadline: entries.deadline, task_priority: entries.priority, entries_status: "Not Started"})
-  
-
 
 request.onerror = (event) => {
   console.error("Why didn't you allow my web app to use IndexedDB?!");
@@ -301,9 +281,10 @@ form.addEventListener("submit", (e) => {
   const task_data = new FormData(e.target);
   const entries = Object.fromEntries(task_data.entries());
   console.table(entries);
-  console.log(entries.task_name)
+  console.log(entries.task_deadline)
   
   form.reset();
+  
   storage.put({
                 task_name: entries.task_name, 
                 task_deadline: entries.task_deadline, 
