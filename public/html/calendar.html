@@ -79,31 +79,46 @@
       <div class="backdrop"></div>
       <div class="modal_container">
         <div class="event_modal">
-            <form id="event_form">
-              <h2>Event Name</h2>
-              <input id="event_name" name="event_name" placeholder="Type Event Name here" required>
-              <h2>Event Notes</h2>
-              <input id="event_notes" name="event_notes" placeholder="Additional notes">
-              <div id="event_times">
-                <div id="event_start">
-                  <h2>Start Time</h2>
-                  <input name="event_start" id="start" type="datetime-local" required>
-                </div>
-                <div id="event_end">
-                  <h2>End Time</h2>
-                  <input name="event_end" id="end" type="datetime-local" required>
-                </div>
-                <div id="all_day">
-                  <input name="all" id="all" type="checkbox">
-                </div>
-              </div>
-              <div class="event_actions">
-                <button id="cancel">Cancel</button>
-                <button type="submit">Save</button>
-              </div>
-            </form>
-
+          <div id="add_title">
+            <p>Add an Event</p>
+            <svg id="cross" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
           </div>
+          <form id="event_form">
+            <div id="event_heading">
+              <p>Event Name</p>
+              <input id="event_name" name="event_name" placeholder="Type Event Name here" required>
+              
+            </div>
+            <div id="event_notes">
+              <p>Event Notes</p>
+              <input id="event_notes" name="event_notes" placeholder="Additional notes">
+            </div>
+            <div id="event_times">
+              <div id="event_start">
+                <p>Event Start</p>
+                <input name="start" id="start" type="datetime-local" required>
+              </div>
+              <div id="event_end">
+                <p>Event End</p>
+                <input name="end" id="end" type="datetime-local" required>
+              </div>
+              <div id="all_day">
+                <p>All Day</p>
+                <input name="all" id="all" type="checkbox">
+              </div>
+            </div>
+            <div class="event_actions">
+              <button id="cancel">Cancel</button>
+              <button id="save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+          
+      </div>
+      <div class="modal_container">
+        <div class="event_modal event_view">
+          
+        </div>
       </div>
       <div class="content calendar_view">
         <div class="contentitem heading">

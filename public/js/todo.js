@@ -62,12 +62,21 @@ function date_pill(deadline){
 function date_update(){
   const now = new Date()
   const timestring = now.toISOString()
-  console.log(timestring.slice(0,16))
-  deadline_input.min = timestring.slice(0,16)
+  
   const dates = document.querySelectorAll(".deadline");
   dates.forEach(date => {
     date.textContent = date_pill(date.dataset.id);
   });
+}
+
+
+function deadline_minimum(){
+  const now = new Date()
+  
+  const now_offset = new Date(now.getTime() - now.getTimezoneOffset() *60000);
+  const timestring = now_offset.toISOString()
+  deadline_input.min = timestring.slice(0,16)
+  console.log(deadline_input)
 }
 
 function priority_colour(priority){
@@ -175,7 +184,7 @@ function rendering(){
           `
           ${task_status(task_info.task_status)}
           <div class="task_info">
-            <h2 class="task_name">${encodeURI(task_info.task_name).replaceAll("%20", " ")}</h2>
+            <h2 class="task_name">${task_info.task_name}</h2>
             <div class = "pill_labels"> 
               <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
               <div class="dropdown">
@@ -262,8 +271,9 @@ request.onupgradeneeded = (event) => {
 request.onsuccess = (event) => {
   db = event.target.result;  
   rendering();
-
+  deadline_minimum()
   setInterval(date_update, 1000);
+  setInterval(deadline_minimum, 60000)
   
 }
 

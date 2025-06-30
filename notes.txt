@@ -1,5 +1,1 @@
-- Streak system?
-- Lockdown browser is funny af ngl
-- Groups?
-- Leaderboard
-- 
+- REMINDER TO FIX NAVIGATION HTML

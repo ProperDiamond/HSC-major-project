@@ -365,7 +365,7 @@ div:has(input:focus) > label{
     flex-grow: 1;
     height: 50px;
     padding: 1em;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0px;
     transition: 50ms ease;
     border: black 2px solid;
     
@@ -614,7 +614,7 @@ select.pill_label:focus {
 }
 
 .event_modal{
-    display: block;
+    display: flex;
     position: fixed; 
     background: #ffffff;
     color: #000000;
@@ -623,19 +623,19 @@ select.pill_label:focus {
     z-index: 4010;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
     margin-left: 80px;
-    border: 2px black solid;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.245) ;
 }
 
 .event_modal input{
     box-sizing: border-box;
-    flex-grow: 1;
     height: 50px;
     padding: 1em;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0px;
     transition: 50ms ease;
-    border: 2px solid black;
+    border: black 2px solid;
+    width: 100%;
     
 }
 
@@ -651,3 +651,68 @@ select.pill_label:focus {
     
 }
 
+.event_top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.event_del{
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.event_view{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#all_day{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.event_actions{
+    border: none;
+    border-radius: 1000px;
+    transition: 150ms ease-in-out;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: .85em .85em;
+    color: white;
+
+}
+
+#cancel{
+    background-color: red;
+    
+
+}
+
+#save{
+    border: none;
+    border-radius: 1000px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: .85em 4em;
+    color: white;
+    background-color: green;
+    transition: 150ms ease-in-out;
+    cursor: pointer;
+}
+
+#add_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cross{
+    margin-left: auto;
+
+}
