@@ -151,7 +151,7 @@ function rendering(){
           </div>
           
           <div class="task_info">
-            <h1 class="task_name">${task_info.task_name}</h1>
+            <h2 class="task_name">${task_info.task_name}</h2>
             <div class = "pill_labels"> 
               <p class="pill_label deadline" data-id = "${task_info.task_deadline}">${date_pill(task_info.task_deadline)}</p>
               <div class="dropdown">

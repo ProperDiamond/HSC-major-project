@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net;">
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Insert Website Name Here</title>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">    
@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
   </head>
   <body>
     <main>
@@ -19,7 +20,7 @@
         <header>
           <div class="image-text">
             <img src="images/logo.png" class="images" alt="Website's Logo">
-            <p class="text">Website</pp>
+            <p class="text">Website</p>
           </div>
         </header>
         <div class="menu">
@@ -49,24 +50,7 @@
                 <p>Settings</p>
               </li>
             </a>
-            <a class="text" href="settings.html" aria-label ="link to settings page">
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="150 -960 960 960" class="icon"width="24px" fill="#FFFFFF"><path d="M433-80q-27 0-46.5-18T363-142l-9-66q-13-5-24.5-12T307-235l-62 26q-25 11-50 2t-39-32l-47-82q-14-23-8-49t27-43l53-40q-1-7-1-13.5v-27q0-6.5 1-13.5l-53-40q-21-17-27-43t8-49l47-82q14-23 39-32t50 2l62 26q11-8 23-15t24-12l9-66q4-26 23.5-44t46.5-18h94q27 0 46.5 18t23.5 44l9 66q13 5 24.5 12t22.5 15l62-26q25-11 50-2t39 32l47 82q14 23 8 49t-27 43l-53 40q1 7 1 13.5v27q0 6.5-2 13.5l53 40q21 17 27 43t-8 49l-48 82q-14 23-39 32t-50-2l-60-26q-11 8-23 15t-24 12l-9 66q-4 26-23.5 44T527-80h-94Zm49-260q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Z"/></svg>
-                <p>Settings</p>
-              </li>
-            </a>
-            <a class="text" href="settings.html" aria-label ="link to settings page">
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="150 -960 960 960" class="icon"width="24px" fill="#FFFFFF"><path d="M433-80q-27 0-46.5-18T363-142l-9-66q-13-5-24.5-12T307-235l-62 26q-25 11-50 2t-39-32l-47-82q-14-23-8-49t27-43l53-40q-1-7-1-13.5v-27q0-6.5 1-13.5l-53-40q-21-17-27-43t8-49l47-82q14-23 39-32t50 2l62 26q11-8 23-15t24-12l9-66q4-26 23.5-44t46.5-18h94q27 0 46.5 18t23.5 44l9 66q13 5 24.5 12t22.5 15l62-26q25-11 50-2t39 32l47 82q14 23 8 49t-27 43l-53 40q1 7 1 13.5v27q0 6.5-2 13.5l53 40q21 17 27 43t-8 49l-48 82q-14 23-39 32t-50-2l-60-26q-11 8-23 15t-24 12l-9 66q-4 26-23.5 44T527-80h-94Zm49-260q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Z"/></svg>
-                <p>Settings</p>
-              </li>
-            </a>
-            <a class="text" href="settings.html" aria-label ="link to settings page">
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="150 -960 960 960" class="icon"width="24px" fill="#FFFFFF"><path d="M433-80q-27 0-46.5-18T363-142l-9-66q-13-5-24.5-12T307-235l-62 26q-25 11-50 2t-39-32l-47-82q-14-23-8-49t27-43l53-40q-1-7-1-13.5v-27q0-6.5 1-13.5l-53-40q-21-17-27-43t8-49l47-82q14-23 39-32t50 2l62 26q11-8 23-15t24-12l9-66q4-26 23.5-44t46.5-18h94q27 0 46.5 18t23.5 44l9 66q13 5 24.5 12t22.5 15l62-26q25-11 50-2t39 32l47 82q14 23 8 49t-27 43l-53 40q1 7 1 13.5v27q0 6.5-2 13.5l53 40q21 17 27 43t-8 49l-48 82q-14 23-39 32t-50-2l-60-26q-11 8-23 15t-24 12l-9 66q-4 26-23.5 44T527-80h-94Zm49-260q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Z"/></svg>
-                <p>Settings</p>
-              </li>
-            </a>
+
             
           </ul>
           
@@ -75,16 +59,24 @@
         
         
       </nav>
-      <div class="home content">
-          <div id="greeting_card"><h1>Hello, ____</h1></div>
-          <div id="schedule_card"><h1>hi</h1></div>
-          <div id="short_todo"></div>
-          <div id="long_todo"></div>
+      <div class="home_view content">
+          <div class="contentitem heading" id="home_heading">
+            <h1>Home</h1>
+          </div>
+          <div class="home_elements">
+            <div id="schedule_card" class="contentitem">
+              <div id="schedule">
+              </div>
+            </div>
+            <div id="short_todo" class="contentitem"></div>
+            <div id="long_todo" class="contentitem"></div>
+          </div>
             
           </div>
 
       </div>
     </main>
     <script src="../js/app.js"></script>
+    <script src="../js/schedule.js"></script>
     </body>
 </html>

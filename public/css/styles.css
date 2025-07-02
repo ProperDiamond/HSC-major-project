@@ -20,9 +20,6 @@
 }
 
 
-
-
-
 .sidebar li.current{
     background-color: var(--label-background);
     border-radius: 20px;
@@ -309,6 +306,7 @@ div:has(input:focus) > label{
 
 .heading{
     border-radius: 15px !important;
+    text-align: center;
 }
 
 #todo_heading{
@@ -365,9 +363,9 @@ div:has(input:focus) > label{
     flex-grow: 1;
     height: 50px;
     padding: 1em;
-    border-radius: 0px;
+    border-radius: 7px;
     transition: 50ms ease;
-    border: black 2px solid;
+    border: rgb(0,0,0,0.2) 2px solid;
     
 }
 
@@ -584,9 +582,8 @@ select.pill_label:focus {
 
 
 #calendar{
-    padding: 30px;
+    padding: 20px 30px 30px 30px;
     width: 70%;
-    padding-top: 20px !important;
 
 }
 
@@ -597,6 +594,8 @@ select.pill_label:focus {
     align-items: center;
     
 }
+
+
 
 .heading{
     background-color: white;
@@ -611,6 +610,8 @@ select.pill_label:focus {
     height: 100vh;
     width: 100vw;
     position: absolute;
+    
+    flex-wrap: wrap;
 }
 
 .event_modal{
@@ -619,24 +620,39 @@ select.pill_label:focus {
     background: #ffffff;
     color: #000000;
     border-radius: 10px;
-    padding: 25px;
+    padding: 25px 20px;
     z-index: 4010;
     display: flex;
     flex-direction: column;
     gap: 25px;
     margin-left: 80px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.245) ;
+    width: 400px;
+    justify-content: center;
+    
+}
+
+.event_view{
+    width: 400px;
 }
 
 .event_modal input{
     box-sizing: border-box;
-    height: 50px;
     padding: 1em;
-    border-radius: 0px;
+    border-radius: 7px;
     transition: 50ms ease;
-    border: black 2px solid;
+    border: rgb(0,0,0,0.2) 2px solid;
+    border-radius: 10px;
+}
+
+.event_modal input:focus{
+    outline: none;
+    border: var(--body-background) 2px solid;
+}
+
+.eventinput_details{
     width: 100%;
-    
+    height: 50px; 
 }
 
 
@@ -674,6 +690,7 @@ select.pill_label:focus {
 #all_day{
     display: flex;
     flex-direction: row;
+    gap: 1em
 }
 
 
@@ -685,25 +702,40 @@ select.pill_label:focus {
     margin-top: 20px;
     padding: .85em .85em;
     color: white;
+    align-self: center;
 
+}
+
+.event_action{
+    border: none;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+    align-self: center;
+    color: white;
 }
 
 #cancel{
-    background-color: red;
-    
-
+    padding: 1em 2em;
+    background-color: rgb(0, 0, 0, 0.2);
 }
 
 #save{
-    border: none;
-    border-radius: 1000px;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: .85em 4em;
-    color: white;
-    background-color: green;
-    transition: 150ms ease-in-out;
-    cursor: pointer;
+    padding: 1em 2.5em;
+    
+    background-color: #e68bbe;
+}
+
+#save:hover{
+    border-radius: 50px;
+    background-color: var(--label-background);
+}
+
+#cancel:hover{
+    border-radius: 50px;
+    background-color: rgb(0, 0, 0, 0.4);
 }
 
 #add_title{
@@ -712,7 +744,94 @@ select.pill_label:focus {
     align-items: center;
 }
 
-#cross{
+.cross{
     margin-left: auto;
+    cursor: pointer;
+    color: black;
 
+}
+
+
+.note{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal; 
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+#event_form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+
+#event_heading_text{
+    font-size: 22px;
+    margin-left: 4px;
+}
+
+.content.home_view{
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.home_elements{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+
+#schedule{
+    grid-row: 1 / -1;  
+    padding: 20px 30px 30px 30px;
+}
+
+.header_controls{
+    margin-left: auto;
+}
+
+.fc .fc-scroller::-webkit-scrollbar{ 
+    display:none; 
+} 
+
+.modal_form_item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.optional{
+    color: rgb(0,0,0,0.4)
+}
+
+.eventform_titles{
+    margin-left: 5px;
+}
+
+.event_title{
+    font-size: 22px;
+}
+
+.event_time{
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.note_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.eventtime_heading{
+    font-weight: 600;
 }
