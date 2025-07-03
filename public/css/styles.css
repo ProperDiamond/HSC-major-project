@@ -679,6 +679,11 @@ select.pill_label:focus {
     background: none;
     margin-left: auto;
     margin-right: 5px;
+
+}
+
+.event_del:hover{
+    fill: red;
 }
 
 .event_view{
@@ -759,6 +764,7 @@ select.pill_label:focus {
     white-space: normal; 
     overflow-wrap: anywhere;
     word-break: break-word;
+    margin-left: 30px;
 }
 
 
@@ -784,7 +790,9 @@ select.pill_label:focus {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 15px;
+    margin: 0;
+    width: 65%;
 }
 
 
@@ -834,4 +842,82 @@ select.pill_label:focus {
 
 .eventtime_heading{
     font-weight: 600;
+}
+
+
+
+#home_todo{
+    padding: 20px;
+}
+
+#notepad{
+    outline: none;
+    border: none;
+    width: 85%;
+    height: 85%;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 25px;
+    resize: none;
+}
+
+#time_form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+
+#time_form input{
+    width: 1.2em;
+    padding: auto;
+}
+
+
+#notes{
+    padding: 20px;
+}
+
+
+#timer{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+#time_view{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.notepad_container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.timer_input{
+    padding: 0;
+    border: none;
+    font-size: 25px;
+    max-width: 4em;
+    max-height: 2.2em;
+    
+}
+
+#time_view input::placeholder{
+    font-size: 25px;
+    
+}
+
+.event_actions{
+    margin-left: auto;
+    margin-right: auto;
 }

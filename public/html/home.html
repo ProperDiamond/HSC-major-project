@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
   </head>
   <body>
     <main>
@@ -68,15 +70,40 @@
               <div id="schedule">
               </div>
             </div>
-            <div id="short_todo" class="contentitem"></div>
-            <div id="long_todo" class="contentitem"></div>
+            <div id="home_todo" class="contentitem"></div>
+            <div class="contentitem" id="notes">
+              <h2>Notes</h2>
+              <div class="notepad_container">
+                <textarea id="notepad" placeholder="Type your notes here..."></textarea>
+              </div>
+            </div>
+            <div class="contentitem" id="timer">
+              <h2>Timer</h2>
+              <div id="time_view">
+              </div>
+              <div id="time_actions">
+                <form id="time_form">
+                  <svg disabled xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M400-280v-400l200 200-200 200Z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
+                  <label for="minutes">Set a <strong>Timer</strong> for</label>
+                  <input type="number" name="hours" class="timer_input" value=0 min=0>
+                  <p>hrs</p>
+                  <input type="number" name="minutes" class="timer_input" value=0 min=0 max=59>
+                  <p>mins</p>
+                </form>
+              </div>
+            </div>
           </div>
             
           </div>
 
       </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/schedule.js"></script>
+    <script src="../js/home_todo.js"></script>
+    <script src="../js/notes.js"></script>
+    <script src="../js/timer.js"></script>
     </body>
 </html>
