@@ -1,6 +1,6 @@
 :root{
     --colour-primary: #a884ec;
-    --colour-secondary: #0a0a0c;
+    --button-highlight: #0a0a0c;
     --text-color: #2e2b41;
     --input-color: #F3F0FF;
     --label-background: #9039b9;
@@ -19,6 +19,21 @@
     font-family : 'Trebuchet MS', sans-serif;
 }
 
+
+.image-text{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    transition:all .25s ease-in-out;
+    background-color: var(--icon-background);
+    border-radius: 20px;
+    
+}
+
+.text{
+    text-align: right;
+}
 
 .sidebar li.current{
     background-color: var(--label-background);
@@ -556,7 +571,7 @@ select.pill_label:focus {
 #todo_submit:hover{
     border-radius: 50px;
     color: white;
-    background-color: var(--colour-secondary)
+    background-color: var(--button-highlight)
 }
 
 .task.completed{
@@ -787,12 +802,13 @@ select.pill_label:focus {
 }
 
 .home_elements{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 15px;
-    margin: 0;
-    width: 65%;
+    flex:1;                          
+    display:grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: repeat(2, minmax(0,1fr));  
+    gap:15px;
+    width:100%;                      
+    min-height:0; 
 }
 
 
@@ -863,22 +879,56 @@ select.pill_label:focus {
 
 #time_form{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5em;
     margin-left: 20px;
-    margin-right: auto;
+    margin-top: auto;
+}
+
+#time_controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer_inputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    white-space:nowrap;   
+    flex-shrink:0;
+    margin-top: 25px;
+    
 }
 
 
+#time_view{
+    font-size: 24px;
+    align-self: center;
+    justify-self: center;
+    margin-top: 25px;
+    margin-bottom: auto;
+}
+
+
+
 #time_form input{
-    width: 1.2em;
+    width: 2em;
     padding: auto;
 }
 
 
+
 #notes{
     padding: 20px;
+}
+
+#notes_heading{
+    margin-bottom: 5px;
 }
 
 
@@ -888,10 +938,9 @@ select.pill_label:focus {
     flex-direction: column;
 }
 
-#time_view{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
+#clear{
+    display: fixed;
+    
 }
 
 .notepad_container{
@@ -900,6 +949,7 @@ select.pill_label:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
 }
 
@@ -907,10 +957,13 @@ select.pill_label:focus {
     padding: 0;
     border: none;
     font-size: 25px;
-    max-width: 4em;
+    max-width: 2em;
     max-height: 2.2em;
+    background: none;
     
 }
+
+
 
 #time_view input::placeholder{
     font-size: 25px;
@@ -921,3 +974,18 @@ select.pill_label:focus {
     margin-left: auto;
     margin-right: auto;
 }
+
+#schedule_card{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#home_todo{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+

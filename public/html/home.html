@@ -21,7 +21,7 @@
       <nav class="sidebar"  arial-label="sidebar for navigation">
         <header>
           <div class="image-text">
-            <img src="images/logo.png" class="images" alt="Website's Logo">
+            <img src="../images/logo.png" class="images" alt="Website's Logo">
             <p class="text">Website</p>
           </div>
         </header>
@@ -46,12 +46,6 @@
                 <p>Tasks</p>
               </li>
             </a>
-            <a class="text" href="settings.html" aria-label ="link to settings page">
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="150 -960 960 960" class="icon"width="24px" fill="#FFFFFF"><path d="M433-80q-27 0-46.5-18T363-142l-9-66q-13-5-24.5-12T307-235l-62 26q-25 11-50 2t-39-32l-47-82q-14-23-8-49t27-43l53-40q-1-7-1-13.5v-27q0-6.5 1-13.5l-53-40q-21-17-27-43t8-49l47-82q14-23 39-32t50 2l62 26q11-8 23-15t24-12l9-66q4-26 23.5-44t46.5-18h94q27 0 46.5 18t23.5 44l9 66q13 5 24.5 12t22.5 15l62-26q25-11 50-2t39 32l47 82q14 23 8 49t-27 43l-53 40q1 7 1 13.5v27q0 6.5-2 13.5l53 40q21 17 27 43t-8 49l-48 82q-14 23-39 32t-50-2l-60-26q-11 8-23 15t-24 12l-9 66q-4 26-23.5 44T527-80h-94Zm49-260q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Z"/></svg>
-                <p>Settings</p>
-              </li>
-            </a>
 
             
           </ul>
@@ -72,28 +66,37 @@
             </div>
             <div id="home_todo" class="contentitem"></div>
             <div class="contentitem" id="notes">
-              <h2>Notes</h2>
+              <h2 id="notes_heading">Notes</h2>
               <div class="notepad_container">
-                <textarea id="notepad" placeholder="Type your notes here..."></textarea>
+                
+                <textarea id="notepad" placeholder="Type your notes here...">
+                  
+                  
+                </textarea>
+                
               </div>
             </div>
             <div class="contentitem" id="timer">
               <h2>Timer</h2>
               <div id="time_view">
+                <h1 id="time_view_text">00 : 25 : 00</h1>
               </div>
-              <div id="time_actions">
-                <form id="time_form">
-                  <svg disabled xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M400-280v-400l200 200-200 200Z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
+              <div id="time_controls">
+                  <svg id="start_pause" disabled class=" start" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M385-243v-474l237 237-237 237Z"/></svg>
+                  <svg id="restart" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
+              </div>
+              <form id="time_form">
+                <div id="timer_inputs">
                   <label for="minutes">Set a <strong>Timer</strong> for</label>
-                  <input type="number" name="hours" class="timer_input" value=0 min=0>
-                  <p>hrs</p>
-                  <input type="number" name="minutes" class="timer_input" value=0 min=0 max=59>
-                  <p>mins</p>
-                </form>
-              </div>
+                  <input type="number" id="hours" name="hours" class="timer_input" value=0 min=0 max=99>
+                  <p>hr(s)</p>
+                  <input type="number" id="minutes" name="minutes" class="timer_input" value=25 min=0 max=59>
+                  <p>min(s)</p>
+                </div>
+              </form>
             </div>
           </div>
+          
             
           </div>
 
